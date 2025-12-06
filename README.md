@@ -1,1 +1,1 @@
-# collaborative project, Jon and Nabil.
+# collaborative project, Jon and Nabil
