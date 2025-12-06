@@ -1,5 +1,5 @@
 /* -----------------------------------------------------
-   RESET
+   RESETS
 ----------------------------------------------------- */
 * {
   padding: 0;
@@ -18,9 +18,9 @@ body {
   background-color: black;
 }
 
-.circle-container{
+.circle-container {
   position: relative;
-  width: 680px;   /* container size — adjust to taste */
+  width: 680px; 
   height: 680px;
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@ body {
 }
 
 /* -----------------------------------------------------
-   CIRCLE 2 — 3 COLORS, ANTICLOCKWISE (pseudo-element ring)
+   CIRCLE 2 — 3 COLORS, ANTICLOCKWISE
 ----------------------------------------------------- */
 .c-2 {
   width: 50px;
@@ -83,7 +83,11 @@ body {
   border-radius: inherit;
 
   padding: 10px;
-  background: conic-gradient(red 0deg 120deg, yellow 120deg 240deg, deeppink 240deg 360deg);
+  background: conic-gradient(
+    red 0deg 120deg,
+    yellow 120deg 240deg,
+    deeppink 240deg 360deg
+  );
 
   /* ring effect (CSS mask) */
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -132,17 +136,17 @@ body {
 }
 
 /* -----------------------------------------------------
-   CIRCLE 4 — Gradient of your choice
+   CIRCLE 4
 ----------------------------------------------------- */
 
-.c-4{
+.c-4 {
   width: 90px;
   height: 90px;
   border-radius: 50%;
   position: relative;
 }
 
-.c-4::before{
+.c-4::before {
   content: "";
   position: absolute;
   width: 90px;
@@ -163,7 +167,7 @@ body {
   animation: spin-cw 1s linear infinite, glow 5.5s ease-in-out infinite;
   animation-delay: 0.9s, 0s;
 
-  --glow-col: rgba(255,150,70,0.18);
+  --glow-col: rgba(255, 150, 70, 0.18);
 }
 @keyframes spin-cw {
   from {
@@ -210,15 +214,13 @@ body {
  ORBIT
 ----------------------------------------------------- */
 
-
 .orbit {
   position: absolute;
   inset: 0;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
-
-.orbiter{
+.orbiter {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -227,39 +229,39 @@ body {
   transform: translate(-50%, -50%) rotate(0deg);
 }
 
-.orbiter .circle{
+.orbiter .circle {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(var(--radius,160px)) translateY(-50%);
+  transform: translateX(var(--radius, 160px)) translateY(-50%);
   pointer-events: auto;
 }
 
 @keyframes orbit-clockwise {
-  from { 
-    transform: translate(-50%, -50%) rotate(0deg); 
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  to   { 
-    transform: translate(-50%, -50%) rotate(360deg); 
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 @keyframes orbit-anticlockwise {
-
-  from { transform: translate(-50%, -50%) rotate(0deg); 
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  to   { 
-    transform: translate(-50%, -50%) rotate(-360deg); 
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
   }
 }
 
-
-.o-1 { 
-  animation: orbit-clockwise 5.5s linear infinite; --radius: 160px; 
+.o-1 {
+  animation: orbit-clockwise 5.5s linear infinite;
+  --radius: 160px;
 }
 
-
-.o-2 { 
-  animation: orbit-anticlockwise 9s linear infinite; --radius: 240px; 
+.o-2 {
+  animation: orbit-anticlockwise 9s linear infinite;
+  --radius: 240px;
 }
 
 /* -----------------------------------------------------
@@ -268,13 +270,16 @@ body {
 
 @keyframes glow {
   0% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.06), 0 0 12px var(--glow-col, rgba(255,255,255,0.12)) inset;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.06),
+      0 0 12px var(--glow-col, rgba(255, 255, 255, 0.12)) inset;
   }
   50% {
-    box-shadow: 0 0 18px rgba(255,255,255,0.08), 0 0 36px var(--glow-col, rgba(255,255,255,0.2)) inset;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.08),
+      0 0 36px var(--glow-col, rgba(255, 255, 255, 0.2)) inset;
   }
   100% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.06), 0 0 12px var(--glow-col, rgba(255,255,255,0.12)) inset;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.06),
+      0 0 12px var(--glow-col, rgba(255, 255, 255, 0.12)) inset;
   }
 }
 
@@ -289,4 +294,6 @@ body {
   animation-play-state: paused !important;
 }
 
-.circle:hover::before { animation-play-state: paused !important; }
+.circle:hover::before {
+  animation-play-state: paused !important;
+}
