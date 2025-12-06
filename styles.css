@@ -1,6 +1,65 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.circle {
+  display: block;
+  border-radius: 50%;
+}
+
+.c-1 {
+  width: 100px;
+  height: 100px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: lime lime firebrick firebrick;
+  box-shadow: 0px 0px 10px lime, 0px 0px 10px firebrick inset;
+
+  animation: spin-c-1 2s linear infinite;
+}
+
+@keyframes spin-c-1 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.c-3 {
+  width: 300px;
+  height: 300px;
+  border-width: 10px;
+  border-style: dashed;
+  border-color: cyan magenta lime yellow;
+  box-shadow: 0px 0px 20px cyan, 0px 0px 20px magenta inset;
+
+  animation: spin-c-3 10s ease-in infinite;
+}
+
+@keyframes spin-c-3 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-7600deg);
+    }
+}
+
+.c-5 {
+  width: 300px;
+  height: 300px;
+}
