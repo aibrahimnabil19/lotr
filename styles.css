@@ -18,6 +18,15 @@ body {
   background-color: black;
 }
 
+.circle-container{
+  position: relative;
+  width: 680px;   /* container size — adjust to taste */
+  height: 680px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* -----------------------------------------------------
    GLOBAL CIRCLE BASE STYLE
 ----------------------------------------------------- */
@@ -60,6 +69,7 @@ body {
   height: 50px;
   border-radius: 50%;
   position: relative;
+  animation: none;
 }
 
 .c-2::before {
@@ -68,20 +78,23 @@ body {
   width: 50px;
   height: 50px;
 
-  top: 50px;
-  left: 50px;
+  top: 0;
+  left: 0;
   border-radius: inherit;
 
   padding: 10px;
-  background: linear-gradient(red, yellow, pink);
+  background: conic-gradient(red 0deg 120deg, yellow 120deg 240deg, deeppink 240deg 360deg);
 
   /* ring effect (CSS mask) */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 
   /* anticlockwise spin */
-  animation: spin-ccw 1s linear infinite;
-  animation-delay: 1s;
+  animation: spin-ccw 3.2s linear infinite, glow 4s ease-in-out infinite;
+  animation-delay: 0.6s, 0s;
+
+  --glow-col: lightcoral;
 }
 
 @keyframes spin-ccw {
@@ -119,7 +132,50 @@ body {
 }
 
 /* -----------------------------------------------------
-   CIRCLE 5 — FREESTYLE (your design goes here)
+   CIRCLE 4 — Gradient of your choice
+----------------------------------------------------- */
+
+.c-4{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.c-4::before{
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+
+  padding: 10px;
+  background: conic-gradient(#ff6b6b, #ffd166, #06d6a0, #118ab2);
+
+  /* ring effect (CSS mask) */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  /* anticlockwise spin */
+  animation: spin-cw 1s linear infinite, glow 5.5s ease-in-out infinite;
+  animation-delay: 0.9s, 0s;
+
+  --glow-col: rgba(255,150,70,0.18);
+}
+@keyframes spin-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -----------------------------------------------------
+   CIRCLE 5 — FREESTYLE
 ----------------------------------------------------- */
 .c-5 {
   width: 11px;
@@ -149,3 +205,88 @@ body {
     box-shadow: 0 0 100px #d62828;
   }
 }
+
+/* -----------------------------------------------------
+ ORBIT
+----------------------------------------------------- */
+
+
+.orbit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; 
+}
+
+
+.orbiter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.orbiter .circle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(var(--radius,160px)) translateY(-50%);
+  pointer-events: auto;
+}
+
+@keyframes orbit-clockwise {
+  from { 
+    transform: translate(-50%, -50%) rotate(0deg); 
+  }
+  to   { 
+    transform: translate(-50%, -50%) rotate(360deg); 
+  }
+}
+@keyframes orbit-anticlockwise {
+
+  from { transform: translate(-50%, -50%) rotate(0deg); 
+  }
+  to   { 
+    transform: translate(-50%, -50%) rotate(-360deg); 
+  }
+}
+
+
+.o-1 { 
+  animation: orbit-clockwise 5.5s linear infinite; --radius: 160px; 
+}
+
+
+.o-2 { 
+  animation: orbit-anticlockwise 9s linear infinite; --radius: 240px; 
+}
+
+/* -----------------------------------------------------
+   GLOW
+----------------------------------------------------- */
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 6px rgba(255,255,255,0.06), 0 0 12px var(--glow-col, rgba(255,255,255,0.12)) inset;
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(255,255,255,0.08), 0 0 36px var(--glow-col, rgba(255,255,255,0.2)) inset;
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(255,255,255,0.06), 0 0 12px var(--glow-col, rgba(255,255,255,0.12)) inset;
+  }
+}
+
+/* -----------------------------------------------------
+  PAUSE WHEN HOVERED
+----------------------------------------------------- */
+
+.circle:hover,
+.circle:hover::before,
+.orbiter:hover,
+.orbiter:hover .circle {
+  animation-play-state: paused !important;
+}
+
+.circle:hover::before { animation-play-state: paused !important; }
