@@ -42,6 +42,12 @@ body {
 .c-1 {
   width: 100px;
   height: 100px;
+  position: absolute;
+  /* width: 90px;
+  height: 90px; */
+  top: 400px;
+  left: 0;
+  right: 100px;
 
   border-width: 5px;
   border-style: solid;
@@ -114,8 +120,13 @@ body {
    CIRCLE 3 — 4 COLORS, CLOCKWISE
 ----------------------------------------------------- */
 .c-3 {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  /* width: 90px;
+  height: 90px; */
+  top: 100px;
+  left: 0;
 
   border-width: 10px;
   border-style: dashed;
@@ -174,7 +185,7 @@ body {
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
 
@@ -262,6 +273,9 @@ body {
 .o-2 {
   animation: orbit-anticlockwise 9s linear infinite;
   --radius: 240px;
+
+.o-2 { 
+  animation: orbit-anticlockwise 9s linear infinite; --radius: 160px; 
 }
 
 /* -----------------------------------------------------
