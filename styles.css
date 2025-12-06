@@ -1,40 +1,15 @@
-.c-2{
-    height:50px;
-    width: 50px;
-    border-radius: 50px;
-    position: relative;
-}
-.c-2::before{
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 50px;
-    left: 50px;
-    border-radius: inherit;
-    padding: 10px;
-    background: linear-gradient(red,yellow,pink);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude; 
-    animation: spinccw 1s linear infinite;
-    animation-delay: 1s;
-}
-
-@keyframes spinccw{
-    from{
-        transform: rotate(0);
-    }
-    to{
-        transform: rotate(-360deg);
-    }
-}
+/* -----------------------------------------------------
+   RESET
+----------------------------------------------------- */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* -----------------------------------------------------
+   PAGE LAYOUT
+----------------------------------------------------- */
 body {
   display: flex;
   justify-content: center;
@@ -43,54 +18,116 @@ body {
   background-color: black;
 }
 
+/* -----------------------------------------------------
+   GLOBAL CIRCLE BASE STYLE
+----------------------------------------------------- */
 .circle {
   display: block;
   border-radius: 50%;
+  position: relative;
 }
 
+/* -----------------------------------------------------
+   CIRCLE 1 — 2 COLORS, CLOCKWISE
+----------------------------------------------------- */
 .c-1 {
   width: 100px;
   height: 100px;
+
   border-width: 5px;
   border-style: solid;
   border-color: lime lime firebrick firebrick;
-  box-shadow: 0px 0px 10px lime, 0px 0px 10px firebrick inset;
+
+  box-shadow: 0 0 10px lime, 0 0 10px firebrick inset;
 
   animation: spin-c-1 2s linear infinite;
 }
 
 @keyframes spin-c-1 {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
+/* -----------------------------------------------------
+   CIRCLE 2 — 3 COLORS, ANTICLOCKWISE (pseudo-element ring)
+----------------------------------------------------- */
+.c-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.c-2::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+
+  top: 50px;
+  left: 50px;
+  border-radius: inherit;
+
+  padding: 10px;
+  background: linear-gradient(red, yellow, pink);
+
+  /* ring effect (CSS mask) */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  /* anticlockwise spin */
+  animation: spin-ccw 1s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes spin-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* -----------------------------------------------------
+   CIRCLE 3 — 4 COLORS, CLOCKWISE
+----------------------------------------------------- */
 .c-3 {
   width: 300px;
   height: 300px;
+
   border-width: 10px;
   border-style: dashed;
   border-color: cyan magenta lime yellow;
-  box-shadow: 0px 0px 20px cyan, 0px 0px 20px magenta inset;
+
+  box-shadow: 0 0 20px cyan, 0 0 20px magenta inset;
 
   animation: spin-c-3 10s ease-in infinite;
 }
 
 @keyframes spin-c-3 {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(-7600deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-7600deg);
+  } /* insane spin preserved */
 }
 
+/* -----------------------------------------------------
+   CIRCLE 5 — FREESTYLE (your design goes here)
+----------------------------------------------------- */
 .c-5 {
   width: 300px;
   height: 300px;
+  /* Add your multi‑color gradient / ring effect */
 }
+
+/* -----------------------------------------------------
+   END OF FILE
+----------------------------------------------------- */
