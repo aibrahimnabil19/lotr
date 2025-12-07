@@ -31,9 +31,9 @@ body {
    GLOBAL CIRCLE BASE STYLE
 ----------------------------------------------------- */
 .circle {
-  display: block;
+  /* display: block; */
   border-radius: 50%;
-  position: relative;
+  /* position: relative; */
 }
 
 /* -----------------------------------------------------
@@ -99,8 +99,9 @@ body {
   /* anticlockwise spin */
   animation: spin-ccw 3.2s linear infinite, glow 4s ease-in-out infinite;
   animation-delay: 0.6s, 0s;
+  
 
-  --glow-col: lightcoral;
+  /* --glow-col: lightcoral; */
 }
 
 @keyframes spin-ccw {
@@ -278,14 +279,11 @@ body {
 ----------------------------------------------------- */
 
 @keyframes glow {
-  0% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.06), 0 0 12px var(--glow-col, rgba(255,255,255,0.12)) inset;
+  0%, 100% {
+    --glow-blur: 10px;
   }
   50% {
-    box-shadow: 0 0 18px rgba(255,255,255,0.08), 0 0 36px var(--glow-col, rgba(255,255,255,0.2)) inset;
-  }
-  100% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.06), 0 0 12px var(--glow-col, rgba(255,255,255,0.12)) inset;
+    --glow-blur: 35px;
   }
 }
 
